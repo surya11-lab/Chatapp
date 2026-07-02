@@ -11,11 +11,11 @@ public class Client {
             Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
             System.out.println("Connected to the chat server!");
 
-            // Setting up input and output streams
+           
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            // Start a thread to handle incoming messages
+           
             new Thread(() -> {
                 try {
                     String serverResponse;
@@ -27,7 +27,7 @@ public class Client {
                 }
             }).start();
 
-            // Read messages from the console and send to the server
+           
             Scanner scanner = new Scanner(System.in);
             String userInput;
             while (true) {
