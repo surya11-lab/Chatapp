@@ -12,7 +12,7 @@ public class Server {
             ServerSocket serverSocket = new ServerSocket(PORT);
             System.out.println("Server is running and waiting for connections...");
 
-            // Thread to handle server admin input
+            
             new Thread(() -> {
                 Scanner scanner = new Scanner(System.in);
                 while (true) {
@@ -21,7 +21,7 @@ public class Server {
                 }
             }).start();
 
-            // Accept incoming connections
+           
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("New client connected: " + clientSocket);
@@ -36,7 +36,7 @@ public class Server {
         }
     }
 
-    // Broadcast a message to all clients
+    
     public static void broadcast(String message, ClientHandler sender) {
         for (ClientHandler client : clients) {
             if (client != sender) {
@@ -45,7 +45,7 @@ public class Server {
         }
     }
 
-    // Internal class to handle client connections
+    
     private static class ClientHandler implements Runnable {
         private Socket clientSocket;
         private PrintWriter out;
